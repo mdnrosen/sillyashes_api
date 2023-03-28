@@ -1,0 +1,58 @@
+{
+    "h2h_wickets_eng": "James Anderson",
+    "h2h_wickets_aus": "Pat Cummins",
+    "h2h_wickets_pt": "Joe Root",
+    "h2h_catches": "Joe Root",
+    "h2h_runs_eng": "Ben Stokes",
+    "h2h_runs_aus": "Marnus Labuschagne",
+    "h2h_runs_bowlers": "Stuart Broad",
+    "h2h_reviews": "Australia",
+    "quack": [
+        "David Warner",
+        "Rory Burns",
+        "Jason Roy"
+    ],
+    "tons": [
+        "Rory Burns",
+        "Ben Stokes",
+        "Steve Smith",
+        "Matthew Wade",
+        "Joe Root"
+    ],
+    "5fers": [
+        "Josh Hazlewood",
+        "Mitchell Marsh",
+        "James Anderson",
+        "Jack Leach"
+    ],
+    "bigHitters": {
+        "engSixes": "Jonny Bairstow",
+        "ausSixes": "Mitchell Marsh"
+    },
+    "fullStraight": {
+        "engFS": "Jofra Archer",
+        "ausFS": "Mitchell Starc"
+    },
+    "num_playersTOtal": "24",
+    "num_wk": "40",
+    "num_stokesSR": "90",
+    "num_spin": "36",
+    "num_elevenRuns": "110",
+    "m_warnerBroad": "3 - 4",
+    "m_venues": "Old Trafford",
+    "m_camGreen": "Bowling Average",
+    "m_firstInns": "300 - 349",
+    "m_afterThree": "2 - 0 England",
+    "m_tailenders": "Caught Behind",
+    "m_retirement": "Both",
+    "tf_chase": "false",
+    "tf_jofra": "false",
+    "tf_20wickets": "false",
+    "tf_nighthawk": "false",
+    "tf_batterDrop": "false",
+    "tf_moreThanBurns": "false",
+    "tf_bazBall": "false",
+    "tf_leachy": "false",
+    "tf_rootTon": "false",
+    "tf_decided": "false"
+}

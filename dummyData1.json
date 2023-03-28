@@ -1,0 +1,60 @@
+{
+    "h2h_wickets_eng": "Stuart Broad",
+    "h2h_wickets_aus": "Pat Cummins",
+    "h2h_wickets_pt": "Marnus Labushagne",
+    "h2h_catches": "Joe Root",
+    "h2h_runs_eng": "Ben Stokes",
+    "h2h_runs_aus": "Marnus Labuschagne",
+    "h2h_runs_bowlers": "Stuart Broad",
+    "h2h_reviews": "England",
+    "quack": [
+        "Jason Roy",
+        "Steve Smith",
+        "Travis Head"
+    ],
+    "tons": [
+        "Jason Roy",
+        "Stuart Broad",
+        "Joe Root",
+        "Marnus Labushagne",
+        "Travis Head",
+        "Matthew Wade"
+    ],
+    "5fers": [
+        "Marnus Labushagne",
+        "James Anderson",
+        "Olly Stone",
+        "Peter Siddle",
+        "Nathan Lyon"
+    ],
+    "bigHitters": {
+        "engSixes": "Chris Woakes",
+        "ausSixes": "James Pattinson"
+    },
+    "fullStraight": {
+        "engFS": "Olly Stone",
+        "ausFS": "Mitchell Starc"
+    },
+    "num_playersTOtal": "29",
+    "num_wk": "40",
+    "num_stokesSR": "89",
+    "num_spin": "30",
+    "num_elevenRuns": "109",
+    "m_warnerBroad": "5 - 6",
+    "m_venues": "Lord's",
+    "m_camGreen": "Bowling Average",
+    "m_firstInns": "300 - 349",
+    "m_afterThree": "2 - 0 England",
+    "m_tailenders": "Caught Outfield",
+    "m_retirement": "Jimmy Anderson",
+    "tf_chase": "true",
+    "tf_jofra": "false",
+    "tf_20wickets": "false",
+    "tf_nighthawk": "true",
+    "tf_batterDrop": "true",
+    "tf_moreThanBurns": "true",
+    "tf_bazBall": "false",
+    "tf_leachy": "false",
+    "tf_rootTon": "false",
+    "tf_decided": "true"
+}
