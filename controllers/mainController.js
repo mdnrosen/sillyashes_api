@@ -5,6 +5,14 @@ const Person = require('../models/Person')
 
 
 
+const s3_client = new S3Client({
+    region: process.env.AWS_REGION,
+    credentials:{
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    }
+})
+
 
 const dummy = {
     name: 'Billy bob',
@@ -55,8 +63,20 @@ exports.addPersonToDB = async(req, res, next) => {
 exports.JSONtoS3 = async(req, res, next) => {
     try {
 
-    } catch(err) {
+        const params = {
+            Bucket: process.env.BUCKET_NAME,
+            Key: uuidv4(),
+            Body: Buffer.from(JSON.stringify(req.body.guesses))
+        }
+        const command = new PutObjectCommand(params)
+        const result = await s3_client.send(command)
 
+
+        console.log(params)
+        res.json(result)
+    } catch(err) {
+        console.log(err)
+        next(err)
     }
 }
 

@@ -17,6 +17,9 @@ router.post('/add',
     // handle the guesses JSON and put that into an S3 bucket
 )
 
+
+router.post('/s3test', mc.JSONtoS3)
+
 // I don't even need an update cos i made the frontend a wanker yay
 router.delete('/person/:id', mc.deleteOnePerson)
 
