@@ -8,23 +8,23 @@ router.get('/test', async(req, res) => {
 })
 
 
-
 router.get('/people', mc.getPeople)
-router.post('/add', mc.addPerson)
+
+router.post('/add', 
+    // add them to the DB, generate a fileKey and check for duplicate username
+    mc.addPersonToDB
+
+    // handle the guesses JSON and put that into an S3 bucket
+)
+
+// I don't even need an update cos i made the frontend a wanker yay
+router.delete('/person/:id', mc.deleteOnePerson)
 
 
-
-
-router.post('/test', async(req, res) => {
-    try {
-        res.json({ post: 'successfully'})
-    } catch (err) {
-        console.log(err)
-    }
-})
 
 
 module.exports = router
+
 
 
 

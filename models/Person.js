@@ -9,7 +9,7 @@ const personSchema = new mongoose.Schema({
         type: String
     },
     guessFileKey: {
-        // required: true,
+        required: true,
         type: String
     }
 
