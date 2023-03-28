@@ -1,5 +1,5 @@
 
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3')
+const { S3Client, PutObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3')
 const { v4: uuidv4 } = require('uuid')
 const Person = require('../models/Person')
 
@@ -21,6 +21,8 @@ const dummy = {
 const data_A = require('../dummyData1.json')
 
 
+
+
 exports.getPeople = async (req, res, next) => {
     try {
         const people = await Person.find()
@@ -33,6 +35,29 @@ exports.getPeople = async (req, res, next) => {
         next('Getting people just didn\'t work mate')
     }
 }
+
+
+exports.getPerson = async(req, res, next) => {
+    try {
+        console.log('trying to grab person')
+        const person = await Person.findById(req.params.id )
+
+        const params = {
+            Key: `${person.guessFileKey}.json`,
+            Bucket: process.env.BUCKET_NAME
+        }
+        console.log('GOT PERSON ->', person)
+
+        const command = new GetObjectCommand(params)
+        const result = await s3_client.send(command)
+        console.log('GOT DATA',result.Body)
+
+        res.json(person)
+    } catch(err) {
+        next(err)
+    }
+}
+
 
 
 exports.addPersonToDB = async(req, res, next) => {
@@ -66,8 +91,10 @@ exports.guessesToS3 = async(req, res, next) => {
         const { guesses, guessFileKey } = req.body
         const params = {
             Bucket: process.env.BUCKET_NAME,
-            Key: guessFileKey,
-            Body: Buffer.from(JSON.stringify(guesses))
+            Key: `${guessFileKey}.json`,
+            Body: Buffer.from(JSON.stringify(guesses)),
+            ContentType: 'application/json; charset=utf-8'
+
         }
         const command = new PutObjectCommand(params)
         const result = await s3_client.send(command)

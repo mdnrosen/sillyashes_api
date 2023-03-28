@@ -9,7 +9,7 @@ router.get('/test', async(req, res) => {
 
 
 router.get('/people', mc.getPeople)
-
+router.get('/:id', mc.getPerson)
 router.post('/add', 
     // add them to the DB, generate a fileKey and check for duplicate username
     mc.addPersonToDB,
