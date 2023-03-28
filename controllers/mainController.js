@@ -41,7 +41,8 @@ exports.addPersonToDB = async(req, res, next) => {
         req.body.guessFileKey = uuidv4();
         const person = await (new Person(req.body)).save()
 
-        res.json(`${person.name} added to DB.`)
+        // res.json(`${person.name} added to DB.`)
+        next()
     } catch (err) {
 
         // Send specific message if the username is already taken
@@ -60,20 +61,18 @@ exports.addPersonToDB = async(req, res, next) => {
 
 
 
-exports.JSONtoS3 = async(req, res, next) => {
+exports.guessesToS3 = async(req, res, next) => {
     try {
-
+        const { guesses, guessFileKey } = req.body
         const params = {
             Bucket: process.env.BUCKET_NAME,
-            Key: uuidv4(),
-            Body: Buffer.from(JSON.stringify(req.body.guesses))
+            Key: guessFileKey,
+            Body: Buffer.from(JSON.stringify(guesses))
         }
         const command = new PutObjectCommand(params)
         const result = await s3_client.send(command)
 
-
-        console.log(params)
-        res.json(result)
+        res.json(`${req.body.name}. Your guesses have been added.`)
     } catch(err) {
         console.log(err)
         next(err)
