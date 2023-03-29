@@ -14,14 +14,6 @@ const s3_client = new S3Client({
 })
 
 
-const dummy = {
-    name: 'Billy bob',
-}
-
-const data_A = require('../dummyData1.json')
-
-
-
 
 exports.getPeople = async (req, res, next) => {
     try {
@@ -40,19 +32,23 @@ exports.getPeople = async (req, res, next) => {
 exports.getPerson = async(req, res, next) => {
     try {
         console.log('trying to grab person')
-        const person = await Person.findById(req.params.id )
+        const person = await Person.findOne({ _id: req.params.id })
 
         const params = {
             Key: `${person.guessFileKey}.json`,
             Bucket: process.env.BUCKET_NAME
         }
-        console.log('GOT PERSON ->', person)
 
         const command = new GetObjectCommand(params)
         const result = await s3_client.send(command)
-        console.log('GOT DATA',result.Body)
+        const guesses = await result.Body.transformToString()
+        person.guesses = guesses
 
-        res.json(person)
+        res.send({
+            _id: person._id,
+            name: person.name,
+            guesses
+        })
     } catch(err) {
         next(err)
     }
@@ -92,12 +88,12 @@ exports.guessesToS3 = async(req, res, next) => {
         const params = {
             Bucket: process.env.BUCKET_NAME,
             Key: `${guessFileKey}.json`,
-            Body: Buffer.from(JSON.stringify(guesses)),
+            Body: JSON.stringify(guesses),
             ContentType: 'application/json; charset=utf-8'
 
         }
         const command = new PutObjectCommand(params)
-        const result = await s3_client.send(command)
+        await s3_client.send(command)
 
         res.json(`${req.body.name}. Your guesses have been added.`)
     } catch(err) {
