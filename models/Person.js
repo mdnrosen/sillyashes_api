@@ -8,7 +8,7 @@ const personSchema = new mongoose.Schema({
         unique: true,
         type: String
     },
-    guessFileKey: {
+    guesses: {
         required: true,
         type: String
     }

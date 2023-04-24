@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const AWS = 'aws-sdk'
 const PORT = process.env.PORT
 const db = require('./db')
 const routes = require('./routes/index')
