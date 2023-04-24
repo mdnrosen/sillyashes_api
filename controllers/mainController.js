@@ -20,7 +20,9 @@ exports.getPerson = async(req, res, next) => {
     try {
 
         const person = await Person.findOne({ _id: req.params.id })
-        res.send({
+
+
+        res.status(200).send({
             _id: person._id,
             name: person.name,
             guesses: JSON.parse(person.guesses)
@@ -37,7 +39,12 @@ exports.addPersonToDB = async(req, res, next) => {
         req.body.guesses = JSON.stringify(req.body.guesses)
         const person = await (new Person(req.body)).save()
 
-        res.json(`${person.name} added to DB.`)
+        res.status(201).send({
+            message: `${person.name} added to DB`,
+            data: person,
+        })
+
+
     } catch (err) {
 
         // Send specific message if the username is already taken
