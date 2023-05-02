@@ -6,9 +6,8 @@ const PORT = process.env.PORT
 const db = require('./db')
 const routes = require('./routes/index')
 
-
 app.use(express.json())
-app.set('port', process.env.ENV || 4444)
+app.set('port', 7777)
 app.use(cors({
     origin: '*'
 }))
