@@ -5,6 +5,7 @@ const Person = require('../models/Person')
 exports.getPeople = async (req, res, next) => {
     try {
         const people = await Person.find()
+        console.log(people)
         if (!people.length) {
             console.log('Success, but there are no people to return')
         }
